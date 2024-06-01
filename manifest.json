@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Warpcast Frames Blocker by @dalresin",
+  "version": "1.0",
+  "description": "Blocks all frames on the feed of warpcast.com",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.warpcast.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-off-16.png",
+      "48": "icons/icon-off-48.png",
+      "128": "icons/icon-off-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://warpcast.com/",
+        "https://warpcast.com/~/trending",
+        "https://warpcast.com/~/all-channels"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
